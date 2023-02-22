@@ -1,2 +1,2 @@
-"# warehouse-automation-serverless-architecture" 
+"# warehouse-automation-serverless-architecture" <br> 
 Azure deployed link-
