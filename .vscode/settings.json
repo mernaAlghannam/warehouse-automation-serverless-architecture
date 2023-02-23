@@ -1,4 +1,10 @@
 {
   "appService.defaultWebAppToDeploy": "/subscriptions/222777e5-63af-4bcd-9b37-938e8cd5b92e/resourceGroups/warehouse-automation_group/providers/Microsoft.Web/sites/warehouse-automation",
-  "appService.deploySubpath": "."
+  "appService.deploySubpath": ".",
+  "azureFunctions.deploySubpath": ".",
+  "azureFunctions.scmDoBuildDuringDeployment": true,
+  "azureFunctions.pythonVenv": ".venv",
+  "azureFunctions.projectLanguage": "Python",
+  "azureFunctions.projectRuntime": "~4",
+  "debug.internalConsoleOptions": "neverOpen"
 }
