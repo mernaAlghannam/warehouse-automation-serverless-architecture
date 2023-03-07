@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "documents",
+      "databaseName": "shipping-data",
+      "collectionName": "shippers",
+      "connectionStringSetting": "shipping-data-dbs-acc_DOCUMENTDB2",
+      "direction": "in",
+      "type": "cosmosDB"
+    }
+  ]
+}
