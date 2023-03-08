@@ -21,31 +21,11 @@ export interface IUniversityClass {
 /**
  * This represents a row in table desplaying student information, their grades, and the class they are in
  */
-export interface IStudentsGrades {
-  studentId: string;
-  studentName: string;
-  classId: string;
-  className: string;
-  semester: string;
-  grade: number
-}
-
-/**
- * This represents a assignment list returned by the API
- */
-export interface IClassAssignments {
-  assignmentId: string;
-  classId: string;
-  date: string;
-  weight: number
-}
-
-/**
- * This represents a student grades for each assignemnt returned by the API
- */
-export interface IGrades {
-  classId: string;
-  studentId: string;
-  name: string;
-  grades: any[];
+export interface IShipperData {
+  ShipperID: string,
+  BoxesRcvd: string;
+  Date: string;
+  ShipmentID: string,
+  ShippingPO: string;
+  WarehouseID: string;
 }

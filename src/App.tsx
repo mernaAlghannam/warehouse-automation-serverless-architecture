@@ -5,20 +5,21 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { SelectChangeEvent } from '@mui/material/Select';
+import key from "./api-key.json"
 /**
  * You will find globals from this file useful!
  */
 import {BASE_API_URL, MY_BU_ID} from "./globals";
-import { IUniversityClass, IStudentsGrades } from "./types/api_types";
-import { GradeTable, dummyData } from "./components/GradeTable";
-import { calcAllFinalGrade } from "./utils/calculate_grade";
+import { IShipperData } from "./types/api_types";
+import { GradeTable } from "./components/GradeTable";
 
 function App() {
   // You will need to use more of these!
   let [currClassId, setCurrClassId] = useState<string>("");
-  let [studentsGradesList, setStudentsGradesList] = useState<IStudentsGrades[]>([]);
-  const [classList, setClassList] = useState<IUniversityClass[]>([]);
+  let [studentsGradesList, setStudentsGradesList] = useState<IShipperData[]>([]);
+  const [classList, setClassList] = useState<any[]>([]);
   let [loading, setLoading] = useState<boolean>(false);
+  // let shipperInformation : IShipperData[] = []
   
 
 // Using this function to update the state of fruit
@@ -49,14 +50,20 @@ function App() {
  * @returns None
  */
   const fetchClassList = async () => {
-    const res = await fetch(BASE_API_URL+"/class/listBySemester/fall2022?buid="+MY_BU_ID, {
+
+    console.log(key["api-key"])
+    // TODO: MUST FIGURE OUT HOW TO SET ENV VARIABLE process.env.REACT_APP_NOT_SECRET_CODE and use in react
+    const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code="+key["api-key"], {
       method: "GET",
       headers: {
-        'accept': 'application/json',
-        'x-functions-key': 'fKZTwhwT1DV64q_JzG6sYoShfq-cJbPwBgjIMOImYSTiAzFuv4-H5g=='},
-    });
-    const json = await res.json();
-    setClassList(json);
+        'accept': 'application/json'
+      },
+    }
+    );
+    const shippingData = await res.json();
+    console.log(shippingData);
+
+    setClassList(shippingData);
   };
 
   // the param is empty as you would want to fetch class list only when you refresh the page and only once
@@ -69,7 +76,20 @@ function App() {
     // set loading to true to hide table and show "Loading..." symbol to indicate to user that 
     // data is being fetched
     await setLoading(true)
-    setStudentsGradesList(await calcAllFinalGrade(currClassId));
+
+    let shipperInformation: IShipperData[]=[]
+    await setStudentsGradesList([])
+    for (const i in classList){
+      if (classList[i].id == currClassId){
+        for (const j in classList[i].Received){
+          shipperInformation.push({ShipperID: classList[i].id, BoxesRcvd:classList[i].Received[j].BoxesRcvd, Date:classList[i].Received[j].Date,
+             ShipmentID:classList[i].Received[j].ShipmentID, ShippingPO:classList[i].Received[j].ShippingPO, WarehouseID:classList[i].Received[j].WarehouseID})
+          console.log(shipperInformation);
+        }
+        break;
+      }
+    }
+    await setStudentsGradesList(shipperInformation);
     // set to false once the loading is complete
     await setLoading(false)
   }
@@ -77,7 +97,7 @@ function App() {
   // this useeffect will be triggered if the current class id was changed
   useEffect(() => {
     // not fetch any grades when the current class id is empty
-    if (currClassId != "")
+    if (currClassId !== "")
       fetchGradeData();
   }, [currClassId])
 
@@ -104,7 +124,7 @@ function App() {
             {/* call handlechange once a classId gets selected in order to set the current class id to the new one */}
             <Select fullWidth={true} value={currClassId} onChange={handleChange}>
               {/* Add each class id in class list as menu item in the drop down menu */}
-          {classList.map((classList) => <MenuItem value={classList.classId} key={classList.classId}>{classList.title}</MenuItem>)}
+          {classList.map((classList) => <MenuItem value={classList.id} key={classList.id}>{classList.id}</MenuItem>)}
             </Select>
             </FormControl>
           </div>
