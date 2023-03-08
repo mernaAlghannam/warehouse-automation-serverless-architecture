@@ -25,13 +25,7 @@ function createData(
  * When you come to office hours for help, we will ask you if you have written
  * this function and tested your project using it.
  */
-export function dummyData() {
-  return [createData("U123", "Merna", "C123", "ST197", "fall2022", 400),
-  createData("U125", "Lucie", "C123","ST197", "fall2022", 400),
-  createData("U126", "Conor", "C123","ST197", "fall2022", 0),
-  createData("U127", "Perry", "C123","ST197", "fall2022", 0),
-  createData("U129", "Maria", "C123","ST197", "fall2022", 400)];
-}
+
 
 /**
  * This is the component where you should write the code for displaying the
