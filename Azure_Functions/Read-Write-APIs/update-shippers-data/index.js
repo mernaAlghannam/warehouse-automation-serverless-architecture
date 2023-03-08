@@ -4,6 +4,6 @@ module.exports = async function (context, req) {
   context.bindings.outputDocument = JSON.stringify([req.body]);
 
   context.res = {
-      body: JSON.stringify(req.body)
+      body: "successfully added shipper informtion into database"
   }
 };
