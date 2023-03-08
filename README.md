@@ -1,5 +1,5 @@
 TODO: <br>
-- set env variable to put my api key in <br>
+- set env variable to put my api key in (then describe security part in doc) <br>
 - DEPLOY WEBSiTe on azure <br>
 - Clean code <br>
 - write api documentation using swaggerui <br>
