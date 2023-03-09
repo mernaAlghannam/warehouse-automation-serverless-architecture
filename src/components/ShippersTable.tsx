@@ -18,12 +18,12 @@ import Paper from '@mui/material/Paper';
 
 /**
  * This is the component where you should write the code for displaying the
- * the table of grades.
+ * the table of shipper information.
  *
  * You might need to change the signature of this function.
  *
  */
-export const GradeTable = ({gradesList, load}:{gradesList: IShipperData[], load: boolean} ) => {
+export const ShippersTable = ({shipperInfo, load}:{shipperInfo: IShipperData[], load: boolean} ) => {
   return (
   <TableContainer component={Paper}>
   <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -40,7 +40,7 @@ export const GradeTable = ({gradesList, load}:{gradesList: IShipperData[], load:
     </TableHead>
     <TableBody>
       {/* displays all data in gradeList to table */}
-      {gradesList.map((row) => (
+      {shipperInfo.map((row) => (
         <TableRow
           key={row.ShipperID}
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

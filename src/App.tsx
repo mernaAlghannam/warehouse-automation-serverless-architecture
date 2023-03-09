@@ -11,15 +11,14 @@ import key from "./api-key.json"
  */
 import {BASE_API_URL, MY_BU_ID} from "./globals";
 import { IShipperData } from "./types/api_types";
-import { GradeTable } from "./components/GradeTable";
+import { ShippersTable } from "./components/ShippersTable";
 
 function App() {
   // You will need to use more of these!
-  let [currClassId, setCurrClassId] = useState<string>("");
-  let [studentsGradesList, setStudentsGradesList] = useState<IShipperData[]>([]);
-  const [classList, setClassList] = useState<any[]>([]);
+  let [currShipperID, setCurrShipperID] = useState<string>("");
+  let [shipperInfoList, setShipperInfoList] = useState<IShipperData[]>([]);
+  const [shippersDataList, setShippersDataList] = useState<any[]>([]);
   let [loading, setLoading] = useState<boolean>(false);
-  // let shipperInformation : IShipperData[] = []
   
 
 // Using this function to update the state of fruit
@@ -63,7 +62,7 @@ function App() {
     const shippingData = await res.json();
     console.log(shippingData);
 
-    setClassList(shippingData);
+    setShippersDataList(shippingData);
   };
 
   // the param is empty as you would want to fetch class list only when you refresh the page and only once
@@ -71,25 +70,25 @@ function App() {
     fetchClassList();
   }, [])
 
-  // async/await function that calls calAllFinalGrade and sets the student grade list that will be displayed in table
-  const fetchGradeData = async () => {
+  // async/await function that TODO
+  const fetchShipperData = async () => {
     // set loading to true to hide table and show "Loading..." symbol to indicate to user that 
     // data is being fetched
     await setLoading(true)
 
     let shipperInformation: IShipperData[]=[]
-    await setStudentsGradesList([])
-    for (const i in classList){
-      if (classList[i].id == currClassId){
-        for (const j in classList[i].Received){
-          shipperInformation.push({ShipperID: classList[i].id, BoxesRcvd:classList[i].Received[j].BoxesRcvd, Date:classList[i].Received[j].Date,
-             ShipmentID:classList[i].Received[j].ShipmentID, ShippingPO:classList[i].Received[j].ShippingPO, WarehouseID:classList[i].Received[j].WarehouseID})
+    await setShipperInfoList([])
+    for (const i in shippersDataList){
+      if (shippersDataList[i].id == currShipperID){
+        for (const j in shippersDataList[i].Received){
+          shipperInformation.push({ShipperID: shippersDataList[i].id, BoxesRcvd:shippersDataList[i].Received[j].BoxesRcvd, Date:shippersDataList[i].Received[j].Date,
+             ShipmentID:shippersDataList[i].Received[j].ShipmentID, ShippingPO:shippersDataList[i].Received[j].ShippingPO, WarehouseID:shippersDataList[i].Received[j].WarehouseID})
           console.log(shipperInformation);
         }
         break;
       }
     }
-    await setStudentsGradesList(shipperInformation);
+    await setShipperInfoList(shipperInformation);
     // set to false once the loading is complete
     await setLoading(false)
   }
@@ -97,13 +96,13 @@ function App() {
   // this useeffect will be triggered if the current class id was changed
   useEffect(() => {
     // not fetch any grades when the current class id is empty
-    if (currClassId !== "")
-      fetchGradeData();
-  }, [currClassId])
+    if (currShipperID !== "")
+      fetchShipperData();
+  }, [currShipperID])
 
   // set the current class id to the one selected in dropdown menu
   const handleChange = (event: SelectChangeEvent) => {
-    setCurrClassId(event.target.value);
+    setCurrShipperID(event.target.value);
   };
 
   return (
@@ -111,32 +110,32 @@ function App() {
       <Grid container spacing={2} style={{ padding: "1rem" }}>
         <Grid xs={12} container alignItems="center" justifyContent="center">
           <Typography variant="h2" gutterBottom>
-            Spark Assessment
+            Warehouse Automator
           </Typography>
         </Grid>
         <Grid xs={12} md={4}>
           <Typography variant="h4" gutterBottom>
-            Select a class
+            Select a Shipper ID
           </Typography>
           <div style={{ width: "100%" }}>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel>Class</InputLabel>
+        <InputLabel>Shipper ID</InputLabel>
             {/* call handlechange once a classId gets selected in order to set the current class id to the new one */}
-            <Select fullWidth={true} value={currClassId} onChange={handleChange}>
+            <Select fullWidth={true} value={currShipperID} onChange={handleChange}>
               {/* Add each class id in class list as menu item in the drop down menu */}
-          {classList.map((classList) => <MenuItem value={classList.id} key={classList.id}>{classList.id}</MenuItem>)}
+          {shippersDataList.map((shipperDataList) => <MenuItem value={shipperDataList.id} key={shipperDataList.id}>{shipperDataList.id}</MenuItem>)}
             </Select>
             </FormControl>
           </div>
         </Grid>
         <Grid xs={12} md={8}>
           <Typography variant="h4" gutterBottom>
-            Final Grades
+            Shipper Received Shipment Information
           </Typography>
           <div>
             {/* if data is loading, hide table and show text "Loading...", otherwise show table that 
             contains studentGradesList fetched from calFinalGrade function */}
-            {loading ? <div>Loading...</div> : <GradeTable gradesList={studentsGradesList} load={loading}/>}
+            {loading ? <div>Loading...</div> : <ShippersTable shipperInfo={shipperInfoList} load={loading}/>}
         </div>
         </Grid>
       </Grid>

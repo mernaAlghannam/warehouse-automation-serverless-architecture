@@ -6,19 +6,6 @@
  */
 
 /**
- * This represents a class as returned by the API
- */
-export interface IUniversityClass {
-  classId: string;
-  title: string;
-  description: string;
-  meetingTime: string;
-  meetingLocation: string;
-  status: string;
-  semester: string;
-}
-
-/**
  * This represents a row in table desplaying student information, their grades, and the class they are in
  */
 export interface IShipperData {

@@ -14,7 +14,7 @@ info:
   #   - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
   version: 1.0.0
 servers:
-  - url: https://shipping-data-api.azurewebsites.net/api/
+  - url: https://shipping-data-api.azurewebsites.net/api
 tags:
   - name: shipping information
     description: Everything about shipping informtion
@@ -39,8 +39,8 @@ paths:
           content:
             text/plain:
               example: successfully added shipper data to database
-        '403':
-          description: Invalid key
+        '401':
+          description: Unauthorized (must added key in code autorization section)
       security:
         - code: []
   /get-shipping-data:
@@ -79,7 +79,7 @@ components:
         id:
           type: string
           example: testing123
-        received:
+        Received:
           type: array
           items:
             type: object
