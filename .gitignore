@@ -105,7 +105,6 @@ env.bak/
 venv.bak/
 
 src/api-key.js
-.env
 
 # Spyder project settings
 .spyderproject
