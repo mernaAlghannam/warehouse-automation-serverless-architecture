@@ -14,14 +14,14 @@ if ($Timer.IsPastDue) {
 Get-Module -Name Az -ListAvailable
 Import-Module Az
 
-$new-api-key = New-Guid
+$newapikey = New-Guid
 
 az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name update-shipping-data --key-name default
 
 
-az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name get-shipping-data --key-name default --key-value $new-api-key
+az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name get-shipping-data --key-name default --key-value $newapikey
 
-az staticwebapp appsettings set --name warehouse-automator --setting-names "REACT_APP_NOT_SECRET_CODE=$new-api-key"
+az staticwebapp appsettings set --name warehouse-automator --setting-names "REACT_APP_NOT_SECRET_CODE=$newapikey"
 
 # Write an information log with the current time.
 Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
