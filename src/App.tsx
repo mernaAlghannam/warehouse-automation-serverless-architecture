@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Select, Typography } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
@@ -94,15 +94,22 @@ function App() {
   }
 
   // this useeffect will be triggered if the current class id was changed
-  useEffect(() => {
-    // not fetch any grades when the current class id is empty
-    if (currShipperID !== "")
-      fetchShipperData();
-  }, [currShipperID])
+  // useEffect(() => {
+  //   // not fetch any grades when the current class id is empty
+  //   if (currShipperID !== "")
+  //     fetchShipperData();
+  // }, [currShipperID])
 
   // set the current class id to the one selected in dropdown menu
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: any) => {
     setCurrShipperID(event.target.value);
+  };
+
+  const handleSubmit = (event: any) => {
+    // alert('A name was submitted: ' + currShipperID);
+    if (currShipperID !== "")
+      fetchShipperData();
+    event.preventDefault();
   };
 
   return (
@@ -115,17 +122,24 @@ function App() {
         </Grid>
         <Grid xs={12} md={4}>
           <Typography variant="h4" gutterBottom>
-            Select a Shipper ID
+           Type a Shipper ID 
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+           Example: Merna123
           </Typography>
           <div style={{ width: "100%" }}>
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>Shipper ID</InputLabel>
             {/* call handlechange once a classId gets selected in order to set the current class id to the new one */}
-            <Select fullWidth={true} value={currShipperID} onChange={handleChange}>
+            {/* <Select fullWidth={true} value={currShipperID} onChange={handleChange}> */}
               {/* Add each class id in class list as menu item in the drop down menu */}
-          {shippersDataList.map((shipperDataList) => <MenuItem value={shipperDataList.id} key={shipperDataList.id}>{shipperDataList.id}</MenuItem>)}
+          {/* {shippersDataList.map((shipperDataList) => <MenuItem value={shipperDataList.id} key={shipperDataList.id}>{shipperDataList.id}</MenuItem>)}
             </Select>
-            </FormControl>
+            </FormControl> */}
+      <form onSubmit={handleSubmit}>
+          <input type="text" value={currShipperID} onChange={handleChange} />
+        <input type="submit" value="Submit" />
+      </form>
           </div>
         </Grid>
         <Grid xs={12} md={8}>
