@@ -141,7 +141,7 @@ function App() {
         </Grid>
         <Grid xs={12} md={8}>
           <Typography variant="h4" gutterBottom>
-            Shipper Received Shipment Information
+            Shipping Boxes Received Items:
           </Typography>
           <div>
             {/* if data is loading, hide table and show text "Loading...", otherwise show table that 
