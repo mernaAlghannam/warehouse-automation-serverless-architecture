@@ -8,7 +8,7 @@ Powershell (windows) <br>
 MacOS/Linux: <br>
   REACT_APP_NOT_SECRET_CODE=YourApiKey npm start <br><br>
  
- If you want to build react app with the env variables, follow these instructions https://github.com/dotenv-org/examples <br> <br>
+ If you want to deploy react app with env variables in azure static web app, follow these steps https://learn.microsoft.com/en-us/azure/static-web-apps/application-settings <br> <br>
  More information on adding env variables: https://create-react-app.dev/docs/adding-custom-environment-variables/ <br> <br>
 
 TODO: <br>
