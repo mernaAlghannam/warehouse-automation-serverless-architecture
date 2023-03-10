@@ -1,4 +1,4 @@
-Deployed Site:
+Deployed Site: (Azure Static Web App):
 https://kind-cliff-02ef4cd1e.2.azurestaticapps.net/
 
 
