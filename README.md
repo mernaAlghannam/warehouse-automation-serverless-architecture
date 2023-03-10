@@ -1,3 +1,9 @@
+How to run:
+Powershell (windows)
+  ($env:REACT_APP_NOT_SECRET_CODE = "YourFunctionKey") -and (npm start)
+MacOS/Linux:
+  REACT_APP_NOT_SECRET_CODE=YourFunctionKey npm start
+
 TODO: <br>
 - DEPLOY WEBSiTe on azure <br>
 - Clean code <br>
