@@ -1,5 +1,5 @@
 Deployed Site:
-https://wonderful-pond-0b3e6e81e.2.azurestaticapps.net
+https://kind-cliff-02ef4cd1e.2.azurestaticapps.net/
 
 
 How to run locally: <br>
