@@ -13,7 +13,6 @@ MacOS/Linux: <br>
  More information on adding env variables: https://create-react-app.dev/docs/adding-custom-environment-variables/ <br> <br>
 
 TODO: <br>
-- DEPLOY WEBSiTe on azure <br>
 - Clean code <br>
 - write script to rotate API key each month (make sure that it updates it in my env variable as well :/) <br>
 - recalculate total cost <br>
