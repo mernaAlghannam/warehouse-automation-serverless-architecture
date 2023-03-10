@@ -58,22 +58,37 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Shipper'          
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Shipper'
-        '403':
-          description: Invalid key
+                  $ref: '#/components/schemas/ResponseBody'          
+        '401':
+          description: Error- Unauthorized (must added key in code autorization section)
       security:
         - code: []
 components:
   schemas:
     Shipper:
-      required:
-        - name
-        - photoUrls
+      type: object
+      properties:
+        Received:
+          type: array
+          items:
+            type: object
+            properties:
+              Date:
+                type: string
+                example: Mar 11, 2022
+              WarehouseID: 
+                type: string
+                example: a908cef7-4c67-40f3-88f7-08a03ba4104e
+              ShippingPO: 
+                type: string
+                example: 3f7b2654-052d-4a4e-905f-87f22a3877a9
+              ShipmentID:
+                type: string
+                example: 4
+              BoxesRcvd:
+                type: string
+                example: 4
+    ResponseBody:
       type: object
       properties:
         id:

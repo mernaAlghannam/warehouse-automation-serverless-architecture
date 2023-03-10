@@ -5,7 +5,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { SelectChangeEvent } from '@mui/material/Select';
-import key from "./api-key.json"
 /**
  * You will find globals from this file useful!
  */
@@ -50,9 +49,8 @@ function App() {
  */
   const fetchClassList = async () => {
 
-    console.log(key["api-key"])
     // TODO: MUST FIGURE OUT HOW TO SET ENV VARIABLE process.env.REACT_APP_NOT_SECRET_CODE and use in react
-    const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code="+key["api-key"], {
+    const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code="+process.env.REACT_APP_NOT_SECRET_CODE, {
       method: "GET",
       headers: {
         'accept': 'application/json'
@@ -106,7 +104,6 @@ function App() {
   };
 
   const handleSubmit = (event: any) => {
-    // alert('A name was submitted: ' + currShipperID);
     if (currShipperID !== "")
       fetchShipperData();
     event.preventDefault();
