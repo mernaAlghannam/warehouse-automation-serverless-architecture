@@ -1,4 +1,8 @@
-How to run: <br>
+Deployed Site:
+https://wonderful-pond-0b3e6e81e.2.azurestaticapps.net
+
+
+How to run locally: <br>
 Powershell (windows) <br>
   ($env:REACT_APP_NOT_SECRET_CODE = "YourApiKey") -and (npm start) <br><br>
 MacOS/Linux: <br>
