@@ -3,6 +3,9 @@ Powershell (windows) <br>
   ($env:REACT_APP_NOT_SECRET_CODE = "YourFunctionKey") -and (npm start) <br><br>
 MacOS/Linux: <br>
   REACT_APP_NOT_SECRET_CODE=YourFunctionKey npm start <br><br>
+ 
+ If you want to build react app with the env variables, follow these instructions https://github.com/dotenv-org/examples <br> <br>
+ More information on adding env variables: https://create-react-app.dev/docs/adding-custom-environment-variables/ <br> <br>
 
 TODO: <br>
 - DEPLOY WEBSiTe on azure <br>
