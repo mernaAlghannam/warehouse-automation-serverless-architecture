@@ -8,7 +8,6 @@ import { SelectChangeEvent } from '@mui/material/Select';
 /**
  * You will find globals from this file useful!
  */
-import {BASE_API_URL, MY_BU_ID} from "./globals";
 import { IShipperData } from "./types/api_types";
 import { ShippersTable } from "./components/ShippersTable";
 
@@ -77,7 +76,7 @@ function App() {
     let shipperInformation: IShipperData[]=[]
     await setShipperInfoList([])
     for (const i in shippersDataList){
-      if (shippersDataList[i].id == currShipperID){
+      if (shippersDataList[i].id === currShipperID){
         for (const j in shippersDataList[i].Received){
           shipperInformation.push({ShipperID: shippersDataList[i].id, BoxesRcvd:shippersDataList[i].Received[j].BoxesRcvd, Date:shippersDataList[i].Received[j].Date,
              ShipmentID:shippersDataList[i].Received[j].ShipmentID, ShippingPO:shippersDataList[i].Received[j].ShippingPO, WarehouseID:shippersDataList[i].Received[j].WarehouseID})
@@ -90,13 +89,6 @@ function App() {
     // set to false once the loading is complete
     await setLoading(false)
   }
-
-  // this useeffect will be triggered if the current class id was changed
-  // useEffect(() => {
-  //   // not fetch any grades when the current class id is empty
-  //   if (currShipperID !== "")
-  //     fetchShipperData();
-  // }, [currShipperID])
 
   // set the current class id to the one selected in dropdown menu
   const handleChange = (event: any) => {
@@ -125,14 +117,6 @@ function App() {
            Example: Merna123
           </Typography>
           <div style={{ width: "100%" }}>
-          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel>Shipper ID</InputLabel>
-            {/* call handlechange once a classId gets selected in order to set the current class id to the new one */}
-            {/* <Select fullWidth={true} value={currShipperID} onChange={handleChange}> */}
-              {/* Add each class id in class list as menu item in the drop down menu */}
-          {/* {shippersDataList.map((shipperDataList) => <MenuItem value={shipperDataList.id} key={shipperDataList.id}>{shipperDataList.id}</MenuItem>)}
-            </Select>
-            </FormControl> */}
       <form onSubmit={handleSubmit}>
           <input type="text" value={currShipperID} onChange={handleChange} />
         <input type="submit" value="Submit" />
