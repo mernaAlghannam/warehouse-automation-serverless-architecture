@@ -44,6 +44,7 @@ function App() {
  */
   const fetchClassList = async () => {
 
+    
     // TODO: MUST FIGURE OUT HOW TO SET ENV VARIABLE process.env.REACT_APP_NOT_SECRET_CODE and use in react
     const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code="+process.env.REACT_APP_NOT_SECRET_CODE, {
       method: "GET",
