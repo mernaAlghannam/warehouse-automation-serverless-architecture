@@ -8,7 +8,8 @@ Powershell (windows) <br>
 MacOS/Linux: <br>
   REACT_APP_NOT_SECRET_CODE=YourApiKey npm start <br><br>
  
- If you want to deploy react app with env variables in azure static web app, follow these steps https://learn.microsoft.com/en-us/azure/static-web-apps/application-settings <br> <br>
+ If you want to deploy react app with env variables in azure static web app, follow these steps https://learn.microsoft.com/en-us/azure/static-web-apps/application-settings <br> 
+ or create a secret ion gitgub and add it to github workflow like this https://stackoverflow.com/questions/65749078/azure-static-web-app-environment-variable<br>
  More information on adding env variables: https://create-react-app.dev/docs/adding-custom-environment-variables/ <br> <br>
 
 TODO: <br>
