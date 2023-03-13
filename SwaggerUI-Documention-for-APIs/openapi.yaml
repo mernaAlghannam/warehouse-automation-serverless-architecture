@@ -117,5 +117,5 @@ components:
   securitySchemes:
     code:
       type: apiKey
-      name: code
-      in: query
+      name: x-functions-key
+      in: header
