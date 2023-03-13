@@ -14,7 +14,6 @@ MacOS/Linux: <br>
 
 TODO: <br>
 - Clean code <br>
-- write script to rotate API key each month (make sure that it updates it in my env variable as well :/) <br>
 - recalculate total cost <br>
 😫
 😫
