@@ -55,6 +55,13 @@ function App() {
     // }
     // );
 
+    const message = await fetch("http://localhost:8000/message", {
+      method: "GET",
+    }
+    );
+
+    console.log(message)
+
     const res = await fetch("http://localhost:8000/", {
       method: "GET",
     }

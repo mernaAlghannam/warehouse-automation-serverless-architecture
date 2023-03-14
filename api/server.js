@@ -8,6 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/message", (req, res) => {
+  res.json({ message: ''+process.env.REACT_APP_NOT_SECRET_CODE });
+});
+
 
 app.get('/', function(req, res, next) {
   request({
