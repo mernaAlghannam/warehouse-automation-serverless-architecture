@@ -49,22 +49,6 @@ function App() {
     }
     );
 
-    // const json = await messages.json()
-
-    // console.log(json)
-
-    
-    // // TODO: MUST FIGURE OUT HOW TO SET ENV VARIABLE process.env.REACT_APP_NOT_SECRET_CODE and use in react
-    // const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data", {
-    //   method: "GET",
-    //   headers: {
-    //     'accept': 'application/json',
-    //     'x-functions-key': ""+process.env.API_KEY
-    //   },
-    // }
-    // );
-
-
     const shippingData = await res.json();
     console.log(shippingData);
 

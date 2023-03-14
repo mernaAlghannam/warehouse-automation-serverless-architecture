@@ -1,7 +1,5 @@
 const https = require("https"); // 1
 
-// const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.API_KEY;
-
 const options = {
     hostname: 'shipping-data-api.azurewebsites.net',
     path: '/api/get-shipping-data',
