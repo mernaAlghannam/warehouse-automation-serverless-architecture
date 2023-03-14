@@ -68,6 +68,6 @@ module.exports = async function (context, req) {
     
     // await request.end() 
 
-    context.res.json({error: JSON.stringify(response)});
+    context.res.json({error: JSON.stringify(p)});
 
 }
