@@ -1,6 +1,6 @@
 const https = require("https"); // 1
 
-const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.API_KEY;
+// const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.API_KEY;
 
 const options = {
     hostname: 'shipping-data-api.azurewebsites.net',
@@ -45,7 +45,7 @@ function doRequest(options, data) {
 
 module.exports = async function (context, req) {
 
-    await doRequest(url);
+    const p = await doRequest(url);
 
     // const responsebody = {}
   
@@ -68,6 +68,6 @@ module.exports = async function (context, req) {
     
     // await request.end() 
 
-    context.res.json({error: "here"});
+    context.res.json({error: JSON.stringify(response)});
 
 }
