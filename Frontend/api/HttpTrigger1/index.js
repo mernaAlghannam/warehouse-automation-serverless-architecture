@@ -4,7 +4,7 @@ module.exports = async function (context, req) {
 
     const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data';
     const headers = {
-        'x-functions-key': api_key
+        'x-functions-key': ""+process.env.API_KEY
     };
 
     await fetch(url, { headers }) // 3
