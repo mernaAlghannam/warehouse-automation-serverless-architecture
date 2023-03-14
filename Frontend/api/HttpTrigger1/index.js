@@ -18,7 +18,7 @@ const options = {
  * @param {Object} options
  * @return {Promise} a promise of request
  */
-function doRequest(options, data) {
+function doRequest(options) {
     return new Promise((resolve, reject) => {
       const req = https.request(options, (res) => {
         res.setEncoding('utf8');
