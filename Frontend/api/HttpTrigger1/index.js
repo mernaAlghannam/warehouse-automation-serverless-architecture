@@ -1,4 +1,4 @@
-const fetch = require("node-fetch"); // 1
+// const fetch = require("node-fetch"); // 1
 
 module.exports = async function (context, req) {
 
