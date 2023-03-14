@@ -55,16 +55,16 @@ function App() {
     // }
     // );
 
-    const messages = await fetch("http://localhost:8000/message", {
-      method: "GET",
-    }
-    );
+    // const messages = await fetch("/message", {
+    //   method: "GET",
+    // }
+    // );
 
-    const json = messages.json()
+    // const json = messages.json()
 
-    console.log(json)
+    // console.log(json)
 
-    const res = await fetch("http://localhost:8000/", {
+    const res = await fetch("/api/get-data", {
       method: "GET",
     }
     );
