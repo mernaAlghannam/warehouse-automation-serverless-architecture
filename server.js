@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(express.static(process.cwd()+"/Frontend/build/"));
+
 app.get("/message", (req, res) => {
   res.json({ message: ''+process.env.REACT_APP_NOT_SECRET_CODE });
 });
@@ -15,7 +17,7 @@ app.get("/message", (req, res) => {
 
 app.get('/', function(req, res, next) {
   request({
-    headers: {'x-functions-key':''+process.env.REACT_APP_NOT_SECRET_CODE},
+    headers: {'x-functions-key':''+process.env.apikey},
     uri: 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data'
   }).pipe(res);
 });
