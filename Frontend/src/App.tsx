@@ -49,7 +49,7 @@ function App() {
     }
     );
 
-    const json = messages.json()
+    const json = await messages.json()
 
     console.log(json)
 
