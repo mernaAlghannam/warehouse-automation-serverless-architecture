@@ -7,23 +7,26 @@ module.exports = async function (context, req) {
 
     const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.API_KEY;
   
-const request = https.request(url, (response) => {
-    let data = '';
-    response.on('data', (chunk) => {
-        data = data + chunk.toString();
+    const request = https.request(url, (response) => {
+        let data = '';
+        response.on('data', (chunk) => {
+            data = data + chunk.toString();
+        });
+    
+        response.on('end', () => {
+            const body = JSON.parse(data);
+            console.log(body);
+        });
+    })
+    
+    const error = "an error"
+    request.on('error', (error) => {
+        error = error;
     });
-  
-    response.on('end', () => {
-        const body = JSON.parse(data);
-        console.log(body);
-    });
-})
-  
-request.on('error', (error) => {
-    console.log('An error', error);
-});
-  
-request.end() 
+    
+    request.end() 
+
+    context.res.json(request);
 
     // const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data';
     // const headers = {
@@ -56,7 +59,7 @@ request.end()
 
 
 
-context.res.json({error: 'request was aborted'});
+// context.res.json({error: 'request was aborted'});
 
     // await fetch(url, { headers }) // 3
     //     .then(response => response.json())
