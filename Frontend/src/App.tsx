@@ -50,7 +50,6 @@ function App() {
     );
 
     const shippingData = await res.json();
-    console.log(shippingData);
 
     setShippersDataList(shippingData);
   };

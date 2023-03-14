@@ -1,28 +1,14 @@
-# Input bindings are passed in via param block.
-param($Timer)
 
-# Get the current universal time in the default string format.
-$currentUTCtime = (Get-Date).ToUniversalTime()
+az login
 
-# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
-if ($Timer.IsPastDue) {
-    Write-Host "PowerShell timer is running late!"
-}
-
-# Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
-
-Get-Module -Name Az -ListAvailable
-Import-Module Az
-
-$newapikey = New-Guid
+az account set --subscription 222777e5-63af-4bcd-9b37-938e8cd5b92e
 
 az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name update-shipping-data --key-name default
 
 
-az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name get-shipping-data --key-name default --key-value $newapikey
+$newapikey = (az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name get-shipping-data --key-name default) 
+
+az account set --subscription 222777e5-63af-4bcd-9b37-938e8cd5b92e
 
 az staticwebapp appsettings set --name warehouse-automator --setting-names "API_KEY=$newapikey"
-
-# Write an information log with the current time.
-Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
 

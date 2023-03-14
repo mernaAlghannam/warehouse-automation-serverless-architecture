@@ -23,7 +23,7 @@ paths:
     post:
       tags:
         - shipping information
-      summary: Add a new pet to the store
+      summary: Add data for new shipper
       description: Add a new pet to the store
       operationId: post-update-shipping-data
       requestBody:
@@ -47,7 +47,7 @@ paths:
     get:
       tags:
         - shipping information
-      summary: Finds Pets by status
+      summary: Get all shippers data
       description: Multiple status values can be provided with comma separated strings
       operationId: get-shipping-data
       responses:
