@@ -19,7 +19,7 @@ const options = {
  * @return {Promise} a promise of request
  */
 function doRequest(options) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const req = https.request(options, (res) => {
         res.setEncoding('utf8');
         let responseBody = '';
@@ -33,9 +33,9 @@ function doRequest(options) {
         });
       });
   
-      req.on('error', (err) => {
-        reject(err);
-      });
+    //   req.on('error', (err) => {
+    //     // reject(err);
+    //   });
   
       req.end();
       
@@ -45,28 +45,7 @@ function doRequest(options) {
 
 module.exports = async function (context, req) {
 
-    const p = await doRequest(options);
-
-    // const responsebody = {}
-  
-    // const request = await https.request(url, (response) => {
-        // let data = '';
-        // response.on('data', (chunk) => {
-        //     data = data + chunk.toString();
-        // });
-    
-    //     response.on('end', () => {
-    //         const body = JSON.parse(data);
-    //         responsebody = body;
-    //     });
-    // })
-    
-    // const error = "an error"
-    // await request.on('error', (error) => {
-    //     error = error;
-    // });
-    
-    // await request.end() 
+    const p = await doRequest(options); 
 
     context.res.json({error: JSON.stringify(p)});
 
