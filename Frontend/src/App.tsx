@@ -55,7 +55,7 @@ function App() {
     // }
     // );
 
-    const messages = await fetch("http://localhost:8000/message", {
+    const messages = await fetch("/message", {
       method: "GET",
     }
     );
