@@ -34,31 +34,13 @@ app.use(express.json());
 
 app.get('/', function(req, res, next) {
   request({
-    uri: 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code=wbZSAG9uF_QA_fFqaJOrzlMYmf_pV1oUqNX5fRuh9TXbAzFukRXm7g=='
+    uri: 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.REACT_APP_NOT_SECRET_CODE
     // qs: {
     //   api_: 'wbZSAG9uF_QA_fFqaJOrzlMYmf_pV1oUqNX5fRuh9TXbAzFukRXm7g==',
     //   // query: 'World of Warcraft: Legion'
     // }
   }).pipe(res);
 });
-
-// const got = require('got');
-// const { pipeline } = require('stream');
-
-// app.get('/', function(req, res) {
-//   const dataStream = got.stream({
-//       uri: 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data',
-//       qs: {
-//         api_key: 'wbZSAG9uF_QA_fFqaJOrzlMYmf_pV1oUqNX5fRuh9TXbAzFukRXm7g=='
-//       }
-//   });
-//   pipeline(dataStream, res, (err) => {
-//       if (err) {
-//           console.log(err);
-//           res.sendStatus(500);
-//       }
-//   });
-// });
 
 
 
