@@ -46,28 +46,28 @@ function App() {
 
     
     // TODO: MUST FIGURE OUT HOW TO SET ENV VARIABLE process.env.REACT_APP_NOT_SECRET_CODE and use in react
-    // const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data", {
-    //   method: "GET",
-    //   headers: {
-    //     'accept': 'application/json',
-    //     'x-functions-key': ""+process.env.REACT_APP_NOT_SECRET_CODE
-    //   },
-    // }
-    // );
+    const res = await fetch("https://shipping-data-api.azurewebsites.net/api/get-shipping-data", {
+      method: "GET",
+      headers: {
+        'accept': 'application/json',
+        'x-functions-key': ""+process.env.REACT_APP_NOT_SECRET_CODE
+      },
+    }
+    );
 
-    // const messages = await fetch("/message", {
-    //   method: "GET",
-    // }
-    // );
-
-    // const json = messages.json()
-
-    // console.log(json)
-
-    const res = await fetch("/api/get-data", {
+    const messages = await fetch("/api/HTTPTrigger1", {
       method: "GET",
     }
     );
+
+    const json = messages.json()
+
+    console.log(json)
+
+    // const res = await fetch("/api/get-data", {
+    //   method: "GET",
+    // }
+    // );
 
     const shippingData = await res.json();
     console.log(shippingData);
