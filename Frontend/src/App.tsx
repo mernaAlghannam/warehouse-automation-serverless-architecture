@@ -50,7 +50,7 @@ function App() {
       method: "GET",
       headers: {
         'accept': 'application/json',
-        'x-functions-key': ""+process.env.REACT_APP_NOT_SECRET_CODE
+        'x-functions-key': ""+process.env.API_KEY
       },
     }
     );
