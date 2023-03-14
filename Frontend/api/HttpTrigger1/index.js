@@ -45,7 +45,7 @@ function doRequest(options, data) {
 
 module.exports = async function (context, req) {
 
-    const p = await doRequest(url);
+    const p = await doRequest(options);
 
     // const responsebody = {}
   
