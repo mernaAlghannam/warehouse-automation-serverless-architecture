@@ -4,6 +4,7 @@ module.exports = async function (context, req) {
 
     const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data';
     const headers = {
+        'accept': 'application/json',
         'x-functions-key': ""+process.env.API_KEY
     };
 
