@@ -21,7 +21,7 @@ az functionapp function keys set -g warehouse-automation_group -n shipping-data-
 
 az functionapp function keys set -g warehouse-automation_group -n shipping-data-api --function-name get-shipping-data --key-name default --key-value $newapikey
 
-az staticwebapp appsettings set --name warehouse-automator --setting-names "REACT_APP_NOT_SECRET_CODE=$newapikey"
+az staticwebapp appsettings set --name warehouse-automator --setting-names "API_KEY=$newapikey"
 
 # Write an information log with the current time.
 Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
