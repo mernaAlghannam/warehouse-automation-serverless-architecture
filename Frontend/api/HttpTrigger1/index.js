@@ -6,6 +6,7 @@ module.exports = async function (context, req) {
 
 
     const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data?code='+process.env.API_KEY;
+    const responsebody = {}
   
     const request = https.request(url, (response) => {
         let data = '';
@@ -15,7 +16,7 @@ module.exports = async function (context, req) {
     
         response.on('end', () => {
             const body = JSON.parse(data);
-            console.log(body);
+            responsebody = body;
         });
     })
     
@@ -26,7 +27,7 @@ module.exports = async function (context, req) {
     
     request.end() 
 
-    context.res.json(request);
+    context.res.json(responsebody);
 
     // const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data';
     // const headers = {
