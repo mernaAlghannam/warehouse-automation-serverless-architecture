@@ -8,7 +8,7 @@ module.exports = async function (context, req) {
         'x-functions-key': ""+process.env.API_KEY
     };
 
-    const response = await fetch(url, { headers });
+    const response = await fetch(url, {method: 'GET', headers });
     const body = await response.json();
 
     // await fetch(url, { headers }) // 3
