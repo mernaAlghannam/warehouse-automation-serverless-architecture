@@ -1,6 +1,16 @@
-const fetch = require("https"); // 1
+const https = require("https"); // 1
 
 module.exports = async function (context, req) {
+
+    const options = {
+        hostname: 'shipping-data-api.azurewebsites.net',
+        path: '/api/get-shipping-data',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-functions-key': ""+process.env.API_KEY
+        },
+      };
 
     // const url = 'https://shipping-data-api.azurewebsites.net/api/get-shipping-data';
     // const headers = {
@@ -29,6 +39,9 @@ module.exports = async function (context, req) {
 //     context.res.json({error: 'request was aborted'});
 //     }
 // }
+
+
+
 
 context.res.json({error: 'request was aborted'});
 
