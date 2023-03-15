@@ -7,6 +7,6 @@ https://kind-cliff-02ef4cd1e.2.azurestaticapps.net/
 
 TODO: <br>
 - Clean code <br>
-- recalculate total cost <br>
+- change get api to get my id
 
 
